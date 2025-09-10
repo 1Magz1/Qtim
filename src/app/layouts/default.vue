@@ -9,11 +9,13 @@
 </script>
 
 <template>
-  <HeaderComponent />
-  <main>
-    <slot />
-  </main>
-  <FooterComponent />
+  <div>
+    <HeaderComponent />
+    <main>
+      <slot />
+    </main>
+    <FooterComponent />
+  </div>
 </template>
 
 <style scoped></style>
