@@ -29,4 +29,8 @@ export default defineNuxtConfig({
   css: [
     '@/app/styles/main.css'
   ],
+
+  ui: {
+    colorMode: false
+  }
 });
