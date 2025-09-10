@@ -1,0 +1,12 @@
+/dist/
+/.output/
+/.nuxt/
+/node_modules/
+/coverage/
+*.min.js
+*.min.css
+.DS_Store
+*.log
+.env
+.env.*
+!.env.example
