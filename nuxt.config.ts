@@ -21,5 +21,9 @@ export default defineNuxtConfig({
         '@': '~~/src/'
       }
     }
-  }
+  },
+
+  css: [
+    '@/app/styles/index.scss'
+  ],
 });
