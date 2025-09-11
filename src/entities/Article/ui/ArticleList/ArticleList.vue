@@ -2,6 +2,7 @@
   import type { Post } from '../../../../shared/types'
   import ArticleItem from '../ArticleItem/ArticleItem.vue'
   import Pagination from '~~/src/widgets/Pagination'
+  import Skeleton from './Skeleton.vue'
 
   interface Props {
     posts: Post[]
@@ -33,7 +34,7 @@
 <template>
   <div>
     <div v-if="pending">
-      <span>Loading</span>
+      <Skeleton />
     </div>
 
     <div v-if="error">
