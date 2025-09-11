@@ -1,2 +1,12 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+
+body {
+  font-family: "TT Commons", sans-serif;
+}
+
+:root{
+  --ui-primary: rgba(16, 16, 16, 1);
+  --ui-radius: 0.5rem;
+  --ui-bg: #fff;
+}
