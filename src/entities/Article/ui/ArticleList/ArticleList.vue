@@ -31,15 +31,9 @@
 </script>
 
 <template>
-  <div>
+  <div class="container">
     <div v-if="pending">
-      <div class="flex items-center gap-4">
-        <USkeleton class="h-12 w-12 rounded-full" />
-        <div class="grid gap-2">
-          <USkeleton class="h-4 w-[250px]" />
-          <USkeleton class="h-4 w-[200px]" />
-        </div>
-      </div>
+      <span>Loading</span>
     </div>
 
     <div v-if="error">
@@ -61,10 +55,15 @@
 </template>
 
 <style scoped>
+  .container {
+    width: 100%;
+    max-width: 1216px;
+    margin: 0 auto;
+  }
   .posts-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    margin: 20px 0;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 40px 20px;
+    margin-bottom: 50px;
   }
 </style>

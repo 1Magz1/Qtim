@@ -1,53 +1,85 @@
 <script setup lang="ts">
   import type { Post } from '../../../../shared/types'
 
-  defineProps<{
+  const props = defineProps<{
     post: Post
   }>()
+
+  const imageLoaded = ref(false)
+
+  const onImageLoad = () => {
+    imageLoaded.value = true
+  }
+
+  const handleClick = () => {
+    navigateTo(`/articles/${props.post.id}`)
+  }
 </script>
 
 <template>
-  <div class="post-card">
-    <h3>{{ post.title }}</h3>
+  <div class="post-card" @click="handleClick">
+    <div class="image-container">
+      <div v-if="!imageLoaded" class="image-placeholder" />
+
+      <NuxtImg
+        :src="post.image"
+        :alt="post.title || 'Post image'"
+        loading="lazy"
+        width="280"
+        height="280"
+        :class="{ 'image-loaded': imageLoaded }"
+        @load="onImageLoad"
+      />
+    </div>
+
     <p>{{ post.preview }}</p>
-    <span class="post-meta">User ID: {{ post.id }}</span>
   </div>
 </template>
 
 <style scoped>
   .post-card {
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 16px;
-    background: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
     transition:
       transform 0.2s ease,
       box-shadow 0.2s ease;
   }
 
   .post-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-20px);
   }
 
-  .post-card h3 {
-    margin-top: 0;
-    color: #333;
-    font-size: 1.1em;
-    margin-bottom: 8px;
+  .image-container {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin-bottom: 24px;
+    overflow: hidden;
   }
 
-  .post-card p {
-    color: #666;
-    line-height: 1.5;
-    margin-bottom: 8px;
+  .image-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(248, 213, 195, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
   }
 
-  .post-meta {
-    font-size: 0.9em;
-    color: #888;
-    display: block;
-    margin-top: 10px;
+  NuxtImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  NuxtImg.image-loaded {
+    opacity: 1;
   }
 </style>
