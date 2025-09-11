@@ -1,5 +1,6 @@
 <script setup lang="ts">
-  import Logo from '../../../shared/assets/Logo.vue'
+  import Logo from '../../../shared/assets/icons/Logo.vue'
+  import LanguageSelector from '../../LanguageSelector'
 </script>
 
 <template>
@@ -7,16 +8,18 @@
     <Logo />
 
     <div class="flex wrapper">
-      <div class="flex items-center link">
-        <NuxtLink class="text-xl" to="/articles">Works</NuxtLink>
-        <NuxtLink class="text-xl" to="/articles">About</NuxtLink>
+      <div class="flex items-center links">
+        <NuxtLink class="text-xl link" to="/articles">Works</NuxtLink>
+        <NuxtLink class="text-xl link" to="/articles">About</NuxtLink>
       </div>
 
       <div class="flex items-center gap-4">
-        <span>Contact</span>
-        <UButton class="rounded-full text-xl cursor-pointer" size="xl"
-          >Let’s work</UButton
-        >
+        <LanguageSelector />
+        <div class="btn">
+          <UButton class="rounded-full text-xl cursor-pointer" size="xl"
+            >Let’s work</UButton
+          >
+        </div>
       </div>
     </div>
   </header>
@@ -26,10 +29,38 @@
   .header {
     padding: 47px 40px 49px 40px;
   }
-  .link {
+  .links {
     gap: 58px;
+  }
+  .link {
+    position: relative;
+    overflow: hidden;
+
+    &:after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: #000;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transform: translateX(-100%);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    &:hover {
+      &:after {
+        transform: translateX(0);
+      }
+    }
   }
   .wrapper {
     gap: 91px;
+  }
+  .btn {
+    button {
+      padding: 16px 32px;
+    }
   }
 </style>
