@@ -145,7 +145,7 @@
     border-radius: 50%;
 
     &__text {
-      transform: translateY(-20px);
+      transform: translateY(-40px);
       color: #fff;
       font-size: 32px;
     }
@@ -157,5 +157,10 @@
     background-color: #000;
     border-radius: 50%;
     margin-top: 8px;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #fff;
+    }
   }
 </style>
