@@ -1,10 +1,5 @@
-<script lang="ts">
+<script setup lang="ts">
   import Triangle from '../../../shared/assets/icons/Triangle.vue'
-
-  export default {
-    name: 'FooterComponent',
-    components: { Triangle }
-  }
 </script>
 
 <template>
