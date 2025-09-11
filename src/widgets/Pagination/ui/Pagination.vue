@@ -28,9 +28,9 @@
     list: 'flex items-center gap-2 pagination',
     first: 'hidden',
     last: 'hidden',
-    item: 'w-11 h-full justify-center cursor-pointer',
-    prev: 'w-11 h-full justify-center cursor-pointer',
-    next: 'w-11 h-full justify-center cursor-pointer'
+    item: 'w-11 h-full justify-center cursor-pointer item',
+    prev: 'w-11 h-full justify-center cursor-pointer control',
+    next: 'w-11 h-full justify-center cursor-pointer control'
   }
 </script>
 
@@ -46,5 +46,13 @@
 <style lang="scss">
   .pagination {
     height: 44px;
+
+    .control {
+      background-color: #fff;
+    }
+
+    .item:not(.bg-primary) {
+      background-color: rgba(243, 243, 243, 1);
+    }
   }
 </style>
