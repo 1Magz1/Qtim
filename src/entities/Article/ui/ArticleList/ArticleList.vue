@@ -31,7 +31,7 @@
 </script>
 
 <template>
-  <div class="container">
+  <div>
     <div v-if="pending">
       <span>Loading</span>
     </div>
@@ -55,11 +55,6 @@
 </template>
 
 <style scoped>
-  .container {
-    width: 100%;
-    max-width: 1216px;
-    margin: 0 auto;
-  }
   .posts-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

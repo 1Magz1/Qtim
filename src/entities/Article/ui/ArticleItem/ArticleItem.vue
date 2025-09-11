@@ -39,6 +39,8 @@
 <style scoped>
   .post-card {
     cursor: pointer;
+    width: 100%;
+    height: 394px;
     transition:
       transform 0.2s ease,
       box-shadow 0.2s ease;
@@ -50,10 +52,13 @@
 
   .image-container {
     position: relative;
-    width: 280px;
     height: 280px;
     margin-bottom: 24px;
     overflow: hidden;
+
+    img {
+      width: 100%;
+    }
   }
 
   .image-placeholder {

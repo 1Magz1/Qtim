@@ -13,8 +13,8 @@
 </script>
 
 <template>
-  <div>
-    <h1>Articles</h1>
+  <div class="container">
+    <h1 class="title">Articles</h1>
     <ArticleList
       :posts="displayedPosts"
       :pending="pending"
@@ -26,3 +26,14 @@
     />
   </div>
 </template>
+
+<style scoped lang="scss">
+  .container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .title {
+    margin-bottom: 59px;
+  }
+</style>
