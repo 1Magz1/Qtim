@@ -30,7 +30,7 @@
 <style scoped lang="scss">
   .container {
     width: 100%;
-    margin: 0 auto;
+    margin: 0 auto 140px auto;
     padding: 0 40px;
   }
   .title {
