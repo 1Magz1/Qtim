@@ -1,0 +1,70 @@
+<script setup lang="ts">
+  import type { Post } from '../../../../shared/types'
+  import ArticleItem from '../ArticleItem/ArticleItem.vue'
+  import Pagination from '~~/src/widgets/Pagination'
+
+  interface Props {
+    posts: Post[]
+    pending: boolean
+    error: any
+    currentPage: number
+    totalPages: number
+    totalPosts: number
+  }
+
+  withDefaults(defineProps<Props>(), {
+    posts: () => [],
+    pending: false,
+    error: null,
+    currentPage: 1,
+    totalPages: 0,
+    totalPosts: 0
+  })
+
+  const emit = defineEmits<{
+    (e: 'update:page', page: number): void
+  }>()
+
+  const handlePageChange = (page: number) => {
+    emit('update:page', page)
+  }
+</script>
+
+<template>
+  <div>
+    <div v-if="pending">
+      <div class="flex items-center gap-4">
+        <USkeleton class="h-12 w-12 rounded-full" />
+        <div class="grid gap-2">
+          <USkeleton class="h-4 w-[250px]" />
+          <USkeleton class="h-4 w-[200px]" />
+        </div>
+      </div>
+    </div>
+
+    <div v-if="error">
+      <p>Ошибка при загрузке постов</p>
+    </div>
+
+    <div v-else>
+      <div class="posts-container">
+        <ArticleItem v-for="post in posts" :key="post.id" :post="post" />
+      </div>
+
+      <Pagination
+        :page="currentPage"
+        :total="totalPosts"
+        @update:page="handlePageChange"
+      />
+    </div>
+  </div>
+</template>
+
+<style scoped>
+  .posts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+  }
+</style>
