@@ -1,11 +1,11 @@
 <script setup lang="ts">
   import type { Post } from '~~/src/shared/types'
+  import ImageLoader from '~~/src/widgets/ImageLoader'
 
   const route = useRoute()
   const router = useRouter()
 
   const postId = computed(() => route.params.id as string)
-  const imageLoaded = ref(false)
 
   const {
     data: post,
@@ -40,10 +40,6 @@
   const goBack = () => {
     router.back()
   }
-
-  const onImageLoad = () => {
-    imageLoaded.value = true
-  }
 </script>
 
 <template>
@@ -65,16 +61,11 @@
       <h1 class="title">{{ post.title }}</h1>
 
       <div class="image-container">
-        <div v-if="!imageLoaded" class="image-placeholder" />
-
-        <NuxtImg
+        <ImageLoader
           :src="post.image"
-          :alt="post.title || 'Post image'"
-          loading="lazy"
           width="1024"
           height="768"
-          :class="{ 'image-loaded': imageLoaded }"
-          @load="onImageLoad"
+          :alt="post.title || 'Post image'"
         />
       </div>
 
@@ -118,7 +109,7 @@
     padding: 60px 0;
   }
 
-  .image-container {
+  .image-container:deep() {
     position: relative;
     margin-bottom: 24px;
 
@@ -127,25 +118,6 @@
       object-fit: cover;
       height: 700px;
     }
-  }
-
-  .image-placeholder {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(248, 213, 195, 1);
-    transition: opacity 0.3s ease;
-  }
-
-  NuxtImg {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  NuxtImg.image-loaded {
-    opacity: 1;
   }
 
   .skeleton {
