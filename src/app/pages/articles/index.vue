@@ -9,7 +9,7 @@
     totalPages,
     totalPosts,
     handlePageChange
-  } = usePosts()
+  } = usePosts(8)
 </script>
 
 <template>

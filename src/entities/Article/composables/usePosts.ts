@@ -2,27 +2,24 @@ import { computed, ref } from 'vue'
 import { useFetch } from 'nuxt/app'
 import type { Post } from '../../../shared/types'
 
-export const usePosts = () => {
+export const usePosts = (postsPerPage: number) => {
   const currentPage = ref(1)
-  const postsPerPage = 8
+  const config = useRuntimeConfig()
 
   const {
     data: allPosts,
     pending,
     error,
     refresh
-  } = useFetch<Post[]>(
-    'https://6082e3545dbd2c001757abf5.mockapi.io/qtim-test-work/posts/',
-    {
-      transform: (posts: Post[]) => {
-        // Заменяем URL изображений на picsum.photos
-        return posts.map(post => ({
-          ...post,
-          image: 'https://picsum.photos/seed/' + Math.random() + '640/480'
-        }))
-      }
+  } = useFetch<Post[]>(`${config.public.apiBase}/posts/`, {
+    transform: (posts: Post[]) => {
+      // Заменяем URL изображений на picsum.photos
+      return posts.map(post => ({
+        ...post,
+        image: 'https://picsum.photos/seed/' + Math.random() + '640/480'
+      }))
     }
-  )
+  })
 
   const displayedPosts = computed(() => {
     if (!allPosts.value) return []

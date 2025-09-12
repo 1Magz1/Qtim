@@ -33,5 +33,11 @@ export default defineNuxtConfig({
 
   ui: {
     colorMode: false
+  },
+
+  runtimeConfig: {
+    public: {
+      apiBase: process.env.NUXT_API_BASE
+    }
   }
 });

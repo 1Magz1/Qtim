@@ -6,22 +6,20 @@
   const router = useRouter()
 
   const postId = computed(() => route.params.id as string)
+  const config = useRuntimeConfig()
 
   const {
     data: post,
     pending,
     error
-  } = useFetch<Post>(
-    `https://6082e3545dbd2c001757abf5.mockapi.io/qtim-test-work/posts/${postId.value}`,
-    {
-      transform: (post: Post) => {
-        return {
-          ...post,
-          image: 'https://picsum.photos/seed/' + Math.random() + '1024/768'
-        }
+  } = useFetch<Post>(`${config.public.apiBase}/posts/${postId.value}`, {
+    transform: (post: Post) => {
+      return {
+        ...post,
+        image: 'https://picsum.photos/seed/' + Math.random() + '1024/768'
       }
     }
-  )
+  })
 
   if (error.value) {
     console.error('Ошибка загрузки статьи:', error.value)
