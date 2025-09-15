@@ -48,7 +48,7 @@
     height: 44px;
 
     .control {
-      background-color: #fff;
+      background-color: var(--color-light);
     }
 
     .item:not(.bg-primary) {

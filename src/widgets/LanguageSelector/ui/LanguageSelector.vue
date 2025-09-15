@@ -83,6 +83,6 @@
 
   .dropdown {
     z-index: 3;
-    background-color: #fff;
+    background-color: var(--color-light);
   }
 </style>

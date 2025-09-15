@@ -72,7 +72,7 @@
 <style scoped lang="scss">
   .footer {
     padding: 140px 112px 30px 112px;
-    background-color: #e2beffff;
+    background-color: var(--color-lavender);
     overflow: hidden;
     position: relative;
   }
@@ -90,7 +90,7 @@
       bottom: 0;
       width: 100%;
       height: 1px;
-      background-color: #000;
+      background-color: var(--color-accent);
       transition: transform 0.3s ease-in-out;
     }
 
@@ -104,7 +104,7 @@
   .special {
     display: block;
     font-size: 112px;
-    color: #101010ff;
+    color: var(--background-color-accented);
     text-decoration: underline;
     text-decoration-thickness: 3px;
     text-underline-offset: 8px;
@@ -136,12 +136,12 @@
     transform: translate(-50%, -50%);
     width: 358px;
     height: 358px;
-    background-color: #000;
+    background-color: var(--color-accent);
     border-radius: 50%;
 
     &__text {
       transform: translateY(-40px);
-      color: #fff;
+      color: var(--text-light);
       font-size: 32px;
     }
   }
@@ -149,13 +149,13 @@
   .btn {
     width: 32px;
     height: 32px;
-    background-color: #000;
+    background-color: var(--color-accent);
     border-radius: 50%;
     margin-top: 8px;
     transition: background-color 0.3s ease-in-out;
 
     &:hover {
-      background-color: #fff;
+      background-color: var(--color-light);
     }
   }
 </style>

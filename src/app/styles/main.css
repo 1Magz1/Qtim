@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 @import "./typography.css";
+@import "./colors.css";
 
 body {
   font-family: "TT Commons", sans-serif;
