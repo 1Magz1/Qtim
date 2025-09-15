@@ -1,3 +1,9 @@
+<script lang="ts">
+  export default {
+    name: 'TriangleIcon'
+  }
+</script>
+
 <template>
   <svg
     width="12"

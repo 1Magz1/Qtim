@@ -1,3 +1,9 @@
+<script lang="ts">
+  export default {
+    name: 'LogoIcon'
+  }
+</script>
+
 <template>
   <svg
     width="84"

@@ -13,14 +13,7 @@
     totalPosts: number
   }
 
-  withDefaults(defineProps<Props>(), {
-    posts: () => [],
-    pending: false,
-    error: null,
-    currentPage: 1,
-    totalPages: 0,
-    totalPosts: 0
-  })
+  defineProps<Props>()
 
   const emit = defineEmits<{
     (e: 'update:page', page: number): void

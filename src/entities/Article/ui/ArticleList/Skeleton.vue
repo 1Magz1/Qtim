@@ -1,3 +1,9 @@
+<script lang="ts">
+  export default {
+    name: 'SkeletonComponent'
+  }
+</script>
+
 <script setup lang="ts">
   const cards = Array(8).fill(null)
 </script>

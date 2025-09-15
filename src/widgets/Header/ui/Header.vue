@@ -1,6 +1,14 @@
-<script setup lang="ts">
+<script lang="ts">
   import Logo from '../../../shared/assets/icons/Logo.vue'
   import LanguageSelector from '../../LanguageSelector'
+
+  export default {
+    name: 'HeaderComponent',
+    components: {
+      Logo,
+      LanguageSelector
+    }
+  }
 </script>
 
 <template>
